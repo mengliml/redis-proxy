@@ -1,0 +1,20 @@
+version: '3'
+services: 
+    redis:
+        image: redis:alpine
+        ports: 
+            - "6379"
+        container_name: redis
+
+    proxy:
+        image: redis-proxy
+        build: .
+        command:
+            sh -c "dep ensure && go build && 
+                   ./redis-proxy --redis-address $REDIS_ADDRESS --global-expiry $GLOBAL_EXPIRY --capacity $CAPACITY  --port $PORT --max-clients $MAX_CLIENTS "
+        depends_on:
+            - redis
+        ports:
+            - "$PORT:$PORT" 
+        container_name: redis-proxy
+
