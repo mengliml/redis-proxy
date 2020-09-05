@@ -115,13 +115,3 @@ make stop
 # Help info
 make help
 ```
- 
-## Time spent on the project
-
-Understanding project: ~30 minutes
-
-Building the system including Redis, Cache, Server and Dockerfile: ~3 hours
-
-Writing Unit tests: ~2 hours
-
-Documentation: ~30 minutes
